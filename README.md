@@ -1,34 +1,35 @@
-Документация к Freex
-Основная суть:
-Бот определяет успешность крипто кошелька при помощи отношение успешный выводных транзакций к общему количеству выводных транзакций (winrate) и отношению вложению к выводу (Raise of income). Я использовал eth протокол при запросе через web3
+Freex Documentation
+The gist:
+The bot determines the success of a crypto wallet using the ratio of successful output transactions to the total number of output transactions (winrate) and the ratio of investment to output (Raise of income). I used the eth protocol when requesting via web3
 ROI:
- 
-Бот запрашивает транзакции за год для конкретного кошелька. 
-ВАЖНО: по этой причине бот может не совпадать с некоторыми источниками из за своего периода и ориентировке протокол eth. 
- 
-В протоколе eth описывается стоимость токена в gwei. Для расчета стоимости токена переведем gwei в eth. (строчка 65).
-Для более грамотного расчета ROI будем учитывать колебание курса eth. Для этого сохраним цену eth за год
- 
-Переведем eth в доллары и определим, какая эта транзакция:
- 
-В конце суммируем годовой оборот и используем отношение вывода к вводу.
- 
-Получаем ROI
+
+The bot requests transactions for a year for a specific wallet.
+
+IMPORTANT: for this reason, the bot may not match some sources due to its period and orientation of the eth protocol.
+
+The eth protocol describes the cost of a token in gwei. To calculate the cost of a token, we will convert gwei to eth. (line 65).
+For a more competent calculation of ROI, we will take into account the fluctuation of the eth exchange rate. To do this, save the eth price for the year
+
+We will convert eth to dollars and determine what kind of transaction this is:
+
+At the end, we sum up the annual turnover and use the output to input ratio.
+
+We get ROI
 FAQ:
-Будут ли влиять переводные транзакции на roi?
-Редко неинвестиционные транзакции будут увеличивать или занижать roi. Их влияние будет минимально. Тем более трейдерские кошельки будут иметь большой roi (больше 1), а не трейдерские – нет. Например, кошелек Бутерина имеет roi годовой 0.85, показывая, что он использует кошелек не для увеличения капитала
-Что если код показывает ROI больше 10 или больше 100?
-Это означает, что инвестиции имеют долгосрочный характер (более одного года). Стоит посмотреть на winrate или увеличить оценку инвестиционного периода (больше одного года)
+Will transfer transactions affect roi?
+Rarely will non-investment transactions increase or decrease the ROI. Their impact will be minimal. Moreover, trader wallets will have a large ROI (more than 1), while non-trader wallets will not. For example, Buterin's wallet has an annual ROI of 0.85, indicating that he is not using the wallet to increase his capital
+What if the code shows an ROI greater than 10 or greater than 100?
+This means that the investment is long-term (more than one year). It is worth looking at the winrate or increasing the investment period estimate (more than one year)
 
 Winrate:
-Запрос информации при помощи такого же протокола, однако теперь учитывается изменение цены относительно gwei для баланса рейтинга кошелька и совмещение с roi.
- 
+Request information using the same protocol, but now takes into account the price change relative to gwei to balance the wallet rating and combine it with ROI.
+
 FAQ:
 
-Если винрейт 100, 50 или 25?
-На рынке имеется некоторая доля технических кошельков, которые используются для спекуляции цены. Они принадлежат фондам, разработчикам валют и прочим институционным инвесторам. Такие кошельки полезны, так как они могут предсказывать движение валют. Это отлично используется для инсайдерской торговли. Однако, это также может быть спящий кошелек. Стоит смотреть на транзакции и объем
-Транзакции
-Транзакции также учитывают по тому же протоколу, однако они расписаны более точны, а их информация классифицируются
- 
-Если транзакций за год нет или мало, рекомендуется не использовать спящий кошелек.
-В csv базе находятся кошельки с ROI больше 1.
+What if the winrate is 100, 50 or 25?
+There is a certain share of technical wallets on the market that are used for price speculation. They belong to funds, currency developers and other institutional investors. Such wallets are useful because they can predict the movement of currencies. This is great for insider trading. However, it can also be a dormant wallet. It is worth looking at transactions and volume
+Transactions
+Transactions are also taken into account using the same protocol, but they are more accurately scheduled and their information is classified
+
+If there are no or few transactions per year, it is recommended not to use a dormant wallet.
+The csv database contains wallets with an ROI greater than 1.
